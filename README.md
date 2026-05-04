@@ -6,6 +6,13 @@ Designed with a clean, user-centric interface and a robust backend, it demonstra
 
 ---
 
+## Project Information
+
+**Developer:** Dylan Cusson  
+**Course:** CSUSB Spring 2026 Platform Computing
+
+---
+
 ## Key Features
 
 ### Secure Authentication
@@ -28,7 +35,7 @@ Fully Dockerized setup ensuring the application runs consistently across differe
 |---|---|---|
 | Node.js / Express | Backend API | Lightweight, non-blocking I/O perfect for API-heavy applications. |
 | MySQL | Database | ACID compliance ensures reliability for user and card data relationships. |
-| Docker | Infrastructure | Removes “it works on my machine” issues by packaging the entire environment. |
+| Docker | Infrastructure | Removes “it works on my machine” issues by packaging the entire environment, making it easy to test and deploy across Windows, Linux, and Mac. |
 | Tailwind CSS | Styling | Enables rapid development of a modern, mobile-responsive UI without custom bloat. |
 | JWT | Authentication | Provides stateless session management, ideal for scalable REST APIs. |
 
@@ -44,3 +51,9 @@ A RESTful API built with Node.js and Express that handles authentication middlew
 
 ### Database
 A relational schema designed with normalized tables to manage users, cards, and the many-to-many relationship between collections and cards.
+
+---
+
+## Disclaimer
+
+Riftbound trademark and associated card images belong to Riot Games. This project is an educational, non-commercial application developed for coursework.
