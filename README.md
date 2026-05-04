@@ -42,7 +42,6 @@ Fully Dockerized setup ensuring the application runs consistently across differe
 | JWT | Authentication | Provides stateless session management, ideal for scalable REST APIs. |
 
 ---
-![Project Screenshot](./images/therift-collection.png)
 
 ## System Architecture
 
