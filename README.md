@@ -1,6 +1,6 @@
 # The Rift - Digital Card Collection Manager
 
-**The Rift** is a full-stack, secure, and responsive web application built for enthusiasts to catalog and manage their digital card collections.
+**The Rift** is a full-stack, secure, and responsive web application built for enthusiasts to catalog and manage their Riftbound TCG card collections.
 
 Designed with a clean, user-centric interface and a robust backend, it demonstrates the full lifecycle of a web application, from database design to deployment.
 
