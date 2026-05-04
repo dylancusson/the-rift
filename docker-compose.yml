@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: cards_db
+      MYSQL_ROOT_PASSWORD: password123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      # Bind mount moved inside the service definition:
+      - ./server/init:/docker-entrypoint-initdb.d
+
+  app:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: password123
+      DB_NAME: cards_db
+    depends_on:
+      - db
+    volumes:
+    - ./server:/app
+    - /app/node_modules
+
+volumes:
+  # Only declare the managed volume name here
+  db_data:

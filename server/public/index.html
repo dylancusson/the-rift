@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rift</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <nav class="bg-gray-900 text-white p-4 flex justify-between items-center border-b border-gray-700 sticky top-0 z-40">
+        <div class="text-2xl font-bold italic tracking-tighter">THE RIFT</div>
+        
+        <div class="flex gap-6 items-center">
+            <button onclick="loadCards('/api/cards')" class="hover:text-blue-400">Home</button>
+            
+            <button id="my-collection-btn" onclick="loadCards('/api/my-collection')" class="hidden hover:text-blue-400">My Collection</button>
+            
+            <button id="nav-auth-btn" onclick="openAuthModal()" class="bg-blue-600 px-4 py-1 rounded hover:bg-blue-500">Login</button>
+        </div>
+    </nav>
+    <img src="logo.png" alt="The Rift Logo" class="w-large max-w-lg mx-auto mt-8 mb-4">
+<div class="flex gap-4 justify-center mb-8 mt-8">
+    
+    <input type="text" id="search-input" placeholder="Search cards by..." class="p-2 rounded bg-gray-700 text-white border border-gray-600 w-full max-w-md">
+    <select id="filter-search" class="p-2 rounded bg-gray-700 text-white border border-gray-600">
+        <option value="name">Name</option>
+        <option value="domain">Domain</option>
+        <option value="energy">Energy</option>
+        <option value="type">Type</option>
+        <option value="tags">Tags</option>
+        <option value="rarity">Rarity</option>
+        <option value="artist">Artist</option>
+    </select>
+</div>
+<div class="container mx-auto py-10">
+    <h1 id="card-gallery-title" class="text-4xl font-extrabold text-white mb-8 text-center">Card Gallery</h1>
+    <div id="card-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <p class="text-white">Loading cards...</p>
+    </div>
+</div>
+
+<! -- Modal for card details --!>
+<div id="card-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50">
+    <div class="bg-gray-900 p-6 rounded-xl max-w-4xl w-full text-white border border-gray-700 relative shadow-2xl">
+        <button onclick="closeModal()" class="absolute top-2 right-4 text-3xl hover:text-red-500">&times;</button>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div>
+                <img id="modal-img" src="" class="w-full h-auto rounded-lg shadow-lg object-contain">
+            </div>
+
+            <div class="flex flex-col space-y-4">
+                <h2 id="modal-name" class="text-4xl font-extrabold text-blue-400"></h2>
+                
+                <div id="modal-tags" class="flex gap-2 text-sm"></div>
+                
+
+                <div class="grid grid-cols-3 gap-2 bg-gray-800 p-4 rounded-lg text-center">
+                    <div><p class="text-xs text-gray-400">Energy</p><p id="modal-energy" class="text-2xl font-bold"></p></div>
+                    <div><p class="text-xs text-gray-400">Power</p><p id="modal-power" class="text-2xl font-bold"></p></div>
+                    <div><p class="text-xs text-gray-400">Might</p><p id="modal-might" class="text-2xl font-bold"></p></div>
+                </div>
+
+                <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-blue-500">
+                    <p id="modal-ability" class="italic text-gray-200"></p>
+                </div>
+
+                <div class="text-sm text-gray-500 mt-auto border-t border-gray-700 pt-4">
+                    <p>Artist: <span id="modal-artist"></span></p>
+                    <p>Set: <span id="modal-set"></span></p>
+                </div>
+                <button id="add-to-collection-btn" 
+                        onclick="addToCollection()"
+                        class="hidden w-full bg-green-600 py-2 rounded font-bold hover:bg-green-500 transition mt-4">
+                    Add to My Collection
+                </button>
+                <button id="remove-from-collection-btn" 
+                        onclick="removeFromCollection()"
+                        class="hidden w-full bg-red-600 py-2 rounded font-bold hover:bg-red-500 transition mt-4">
+                    Remove from My Collection
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<! -- Login Modal --!>
+<div id="auth-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50">
+    <div class="bg-gray-900 p-8 rounded-xl max-w-sm w-full text-white border border-gray-700">
+        <button onclick="closeAuthModal()" class="absolute top-2 right-4 text-3xl hover:text-red-500">&times;</button>
+        <h2 id="auth-title" class="text-2xl font-bold mb-6 text-center">Login</h2>
+        
+        <div class="space-y-4">
+            <input type="text" id="auth-username" placeholder="Username" class="w-full p-2 bg-gray-800 rounded border border-gray-600">
+            <input type="password" id="auth-password" placeholder="Password" class="w-full p-2 bg-gray-800 rounded border border-gray-600">
+            <button onclick="handleAuth()" id="auth-btn" class="w-full bg-blue-600 py-2 rounded font-bold hover:bg-blue-500">Login</button>
+        </div>
+
+        <p class="mt-4 text-center text-sm text-gray-400">
+            <span id="auth-toggle-text">Need an account?</span> 
+            <button id="auth-switch-btn" onclick="toggleAuthMode()" class="text-blue-400 underline">Switch to Sign Up</button>
+        </p>
+    </div>
+</div>
+<div id="toast-container" class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 flex flex-col gap-2"></div>
+<script src="script.js" defer></script>
+</body>
+</html>
