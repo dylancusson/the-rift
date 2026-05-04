@@ -3,6 +3,7 @@
 **The Rift** is a full-stack, secure, and responsive web application built for enthusiasts to catalog and manage their Riftbound TCG card collections.
 
 Designed with a clean, user-centric interface and a robust backend, it demonstrates the full lifecycle of a web application, from database design to deployment.
+
 ![Project Screenshot](./images/therift-home.png)
 ---
 
@@ -26,6 +27,7 @@ Toggle functionality to add or remove cards from a personal database, synced acr
 
 ### Containerized Environment
 Fully Dockerized setup ensuring the application runs consistently across different operating systems, including PC, Mac, and Linux.
+
 ![Project Screenshot](./images/therift-cardmodal.png)
 ---
 
@@ -41,6 +43,7 @@ Fully Dockerized setup ensuring the application runs consistently across differe
 
 ---
 ![Project Screenshot](./images/therift-collection.png)
+
 ## System Architecture
 
 ### Frontend
